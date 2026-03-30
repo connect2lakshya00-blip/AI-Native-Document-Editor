@@ -7,7 +7,7 @@ import { Save, Share, Sparkles, ArrowLeft, Upload } from 'lucide-react';
 import ShareModal from '../components/ShareModal';
 import AIModal from '../components/AIModal';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
 
 function Editor({ activeUser }) {
   const { id } = useParams();

@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { Plus, FileText, Clock } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
 
 function Home({ activeUser }) {
   const [documents, setDocuments] = useState([]);

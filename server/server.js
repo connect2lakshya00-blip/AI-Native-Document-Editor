@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
 // Routes
 const documentRoutes = require("./routes/documents");
@@ -21,9 +22,11 @@ app.use("/documents", documentRoutes);
 app.use("/upload", uploadRoutes);
 app.use("/ai", aiRoutes);
 
-// Base route for health check
-app.get("/", (req, res) => {
-  res.send("AI Document Editor API is vividly running");
+// Serve frontend
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 app.listen(PORT, () => {
